@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AstroPet — Hand-Crafted Pixel Desktop Companion</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <h1>AstroPet</h1>
+        <p class="subtitle">Hand-coded 16x16 pixel desktop companion for macOS, Linux, Windows &amp; Browser</p>
+      </div>
+      <div class="badges">
+        <span class="badge" id="state-badge">STATE: WANDER</span>
+        <span class="badge" id="fps-badge">60 FPS PIXEL ENGINE</span>
+      </div>
+    </header>
+
+    <section class="stage-grid">
+      <div class="desktop-stage" id="desktop-stage">
+        <div class="window-chrome">
+          <span class="dot red"></span>
+          <span class="dot amber"></span>
+          <span class="dot green"></span>
+          <span class="window-title">macOS Desktop Ledge Simulation — Click anywhere to drop a Star Snack</span>
+        </div>
+        <canvas id="pet-canvas" width="760" height="420"></canvas>
+        <div class="dock-bar">
+          <span>Finder</span>
+          <span>Terminal</span>
+          <span>Code</span>
+          <span class="active">AstroPet.app</span>
+          <span>Hackatime</span>
+        </div>
+      </div>
+
+      <aside class="inspector">
+        <div class="card">
+          <h2>Companion Telemetry</h2>
+          <div class="meter-row">
+            <span>Satiety (Star Snacks)</span>
+            <strong id="val-hunger">92%</strong>
+          </div>
+          <div class="bar"><div id="bar-hunger" class="fill" style="width:92%"></div></div>
+
+          <div class="meter-row">
+            <span>Focus Momentum</span>
+            <strong id="val-focus">88%</strong>
+          </div>
+          <div class="bar"><div id="bar-focus" class="fill mint" style="width:88%"></div></div>
+
+          <div class="meter-row">
+            <span>Mood Resonance</span>
+            <strong id="val-mood">96%</strong>
+          </div>
+          <div class="bar"><div id="bar-mood" class="fill gold" style="width:96%"></div></div>
+        </div>
+
+        <div class="card">
+          <h2>Interactive Actions</h2>
+          <div class="btn-grid">
+            <button id="btn-snack" type="button">Drop Star Snack</button>
+            <button id="btn-jump" type="button">Zero-G Hop</button>
+            <button id="btn-pomodoro" type="button">Start 25m Focus</button>
+            <button id="btn-sleep" type="button">Toggle Nap Mode</button>
+          </div>
+          <p class="hint" id="speech-log">"Scanning active git branch... ready to pair program!"</p>
+        </div>
+
+        <div class="card">
+          <h2>16x16 Hand-Coded Pixel Matrix</h2>
+          <p class="small">Zero AI assets: rendered directly from integer color-index matrices in <code>app.js</code> &amp; <code>pet_desktop.py</code>.</p>
+          <pre id="matrix-preview" class="matrix-box"></pre>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
