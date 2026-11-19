@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """AstroPet Desktop Runner — Borderless Always-On-Top Pixel Companion for macOS/Linux/Windows."""
 import tkinter as tk
-import random
 import math
 import time
 
@@ -47,7 +46,6 @@ class AstroPetDesktop:
         self.vx = 2.0
         self.state = "WANDER"
         self.hunger = 88
-        self.energy = 94
         self.canvas = tk.Canvas(self.root, width=self.size, height=self.size, bg="#11111B", highlightthickness=0)
         self.canvas.pack()
         self.canvas.bind("<Button-1>", self.on_click)
