@@ -46,6 +46,7 @@ class AstroPetDesktop:
         self.y = 680
         self.vx = 2.0
         self.state = "WANDER"
+        self.happy_until = 0.0
         self.hunger = 88
         self.energy = 94
         self.canvas = tk.Canvas(self.root, width=self.size, height=self.size, bg="#11111B", highlightthickness=0)
@@ -57,6 +58,7 @@ class AstroPetDesktop:
     def on_click(self, event):
         self.hunger = min(100, self.hunger + 10)
         self.state = "HAPPY"
+        self.happy_until = time.time() + 1.0
 
     def on_drag(self, event):
         self.x = event.x_root - self.size // 2
@@ -74,10 +76,17 @@ class AstroPetDesktop:
                     self.canvas.create_rectangle(x0, y0, x0 + self.scale, y0 + self.scale, fill=color, outline="")
 
     def tick(self):
+        if self.state == "HAPPY" and time.time() >= self.happy_until:
+            self.state = "WANDER"
         if self.state == "WANDER":
             self.x += self.vx
-            if self.x < 80 or self.x > 960:
-                self.vx = -self.vx
+            max_x = max(80, self.root.winfo_screenwidth() - self.size - 80)
+            if self.x < 80:
+                self.x = 80
+                self.vx = abs(self.vx)
+            elif self.x > max_x:
+                self.x = max_x
+                self.vx = -abs(self.vx)
         bob = int(math.sin(time.time() * 6.0) * 3)
         self.draw_sprite(bob=bob)
         self.root.geometry(f"{self.size}x{self.size}+{int(self.x)}+{int(self.y)}")
