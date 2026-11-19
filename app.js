@@ -162,6 +162,10 @@ function loop() {
   } else {
     pet.y = pet.groundY;
     pet.vy = 0;
+    if (pet.state === "ZERO_G_HOP") {
+      pet.state = pet.snacks.length > 0 ? "CHASE_SNACK" : "WANDER";
+      updateHud();
+    }
   }
 
   // Draw snacks
